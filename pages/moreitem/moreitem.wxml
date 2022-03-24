@@ -1,0 +1,31 @@
+<!--pages/moreitem/moreitem.wxml-->
+<!--更多-->
+<view class="container">
+    <!-- tab导航栏 -->
+    <!-- scroll-left属性可以控制滚动条位置 -->
+    <!-- scroll-with-animation滚动添加动画过渡 -->
+    <scroll-view scroll-x="true" class="nav" scroll-left="{{navScrollLeft}}" scroll-with-animation="{{true}}">
+        <block wx:for="{{navData}}" wx:for-index="idx" wx:for-item="navItem" wx:key="idx">
+            <view class="nav-item " data-current="{{idx}}" bindtap="switchNav">
+                <view class="nav-text {{currentTab == idx ?'active':''}}">{{navItem.text}}</view>
+            </view>
+        </block>
+    </scroll-view>
+    <!-- 页面内容 -->
+    <swiper class="tab-box" current="{{currentTab}}" duration="300" bindchange="switchTab">
+        <swiper-item wx:for="{{yxlist}}" wx:for-item="tabItem" wx:for-index="idx" wx:key="idx" class="tab-content">
+            <block wx:for="{{tabItem.item}}">
+                <view class="records_item1" data-url="{{item.url}}" data-id="{{item.id}}" data-cover="{{item.cover}}" bindtap="gofm_item">
+                    <view class="records_item1_img">
+                        <image src="{{item.cover}}"></image>
+                        <image src="../../image/playCircle.png"></image>
+                        <text>{{item.viewnum}}万</text>
+                    </view>
+                    <view class="records_item1_text">
+                        <text>{{item.title}}</text>
+                    </view>
+                </view>
+            </block>
+        </swiper-item>
+    </swiper>
+</view>

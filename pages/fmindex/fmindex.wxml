@@ -1,0 +1,215 @@
+<!--pages/fmindex/fmindex.wxml-->
+<!--首页-->
+<!--搜索-->
+<view class="top_search" bindtap="gosearch" >
+    <view class="top_search_box">
+        <text>输入您喜欢的内容吧!</text>
+        <image src="../../image/speech.png"></image>
+    </view>
+</view>
+<!--导航-->
+<view class="nav">
+    <view class="nav_box">
+        <view class="nav_item1">
+            <view class="cat_style" bindtap="gomore" data-num="0">
+                <view class="image_box">
+                    <image src="../../image/yali.png"></image>
+                </view>
+                <text>平静舒压</text>
+            </view>
+            <view class="cat_style" bindtap="gomore" data-num="1">
+                <view class="image_box">
+                    <image src="../../image/icon1.png"></image>
+                </view>
+                <text>情绪管理</text>
+            </view>
+            <view class="cat_style" bindtap="gomore" data-num="2">
+                <view class="image_box">
+                    <image src="../../image/sun_lift.png"></image>
+                </view>
+                <text>正念生活</text>
+            </view>
+        </view>
+
+        <view class="nav_item2">
+            <view class="cat_style" bindtap="gomore" data-num="5">
+                <view class="image_box">
+                    <image src="../../image/story.png"></image>
+                </view>
+                <text>暖心故事</text>
+            </view>
+            <view class="cat_style" bindtap="gomore" data-num="3">
+                <view class="image_box">
+                    <image src="../../image/sleep.png"></image>
+                </view>
+                <text>助眠冥想</text>
+            </view>
+            <view class="cat_style" bindtap="gomore" data-num="4">
+                <view class="image_box">
+                    <image src="../../image/music.png"></image>
+                </view>
+                <text>空耳音乐</text>
+            </view>
+        </view>
+    </view>
+</view>
+<!--历史-->
+<view class="records_nav" wx:if="{{history!=''}}">
+    <text>历史收听</text>
+    <image src="../../image/del.png" bindtap="delhist"></image>
+</view>
+<scroll-view class="records" scroll-x="{{true}}" style="height: 20%;"  wx:if="{{history!=''}}" scroll-with-animation="true">
+    <block wx:for="{{history}}" wx:for-item="item" wx:key="{{item.id}}" >
+        <view class="records_item" data-url="{{item.url}}" data-id="{{item.id}}" data-cover="{{item.cover}}" data-title="{{item.title}}" data-speak="{{item.speak}}" data-viewnum="{{item.viewnum}}" bindtap="gofm_item">
+            <view class="records_item_img">
+                <image src="{{item.cover}}" mode="widthFix"></image>
+                <image src="../../image/playCircle.png"  mode="widthFix"></image>
+                <text>{{item.viewnum}}万</text>
+            </view>
+            <view class="records_item_text" style="font-size: 14px; margin-top: 10px;">
+                <text>{{item.title}}</text>
+            </view>
+        </view>
+    </block>
+</scroll-view>
+<!--平静舒压-->
+<view class="records_nav">
+    <text>平静舒压</text>
+    <text bindtap="gomore" data-num="0">更多</text>
+</view>
+<scroll-view class="records" scroll-x="{{true}}" scroll-with-animation="true">
+    <block wx:for="{{items1}}" wx:key="{{item.id}}">
+        <view class="records_item1" data-url="{{item.url}}" data-id="{{item.id}}" data-cover="{{item.cover}}" data-title="{{item.title}}" data-speak="{{item.speak}}" data-viewnum="{{item.viewnum}}" bindtap="gofm_item">
+            <view class="records_item1_img">
+                <image src="{{item.cover}}"  mode="widthFix"></image>
+                <image src="../../image/playCircle.png"  mode="widthFix"></image>
+                <text>{{item.viewnum}}万</text>
+            </view>
+            <view class="records_item1_text">
+                <text>{{item.title}}</text>
+            </view>
+        </view>
+    </block>
+</scroll-view>
+<!--情绪管理-->
+<view class="records_nav">
+    <text>情绪管理</text>
+    <text bindtap="gomore" data-num="1">更多></text>
+</view>
+<scroll-view class="records" scroll-x="{{true}}" scroll-with-animation="true">
+    <block wx:for="{{items2}}" wx:key="{{item.id}}">
+        <view class="records_item1" data-url="{{item.url}}" data-id="{{item.id}}" data-cover="{{item.cover}}" data-title="{{item.title}}" data-speak="{{item.speak}}"data-viewnum="{{item.viewnum}}"  bindtap="gofm_item">
+            <view class="records_item1_img">
+                <image src="{{item.cover}}"  mode="widthFix"></image>
+                <image src="../../image/playCircle.png"  mode="widthFix"></image>
+                <text>{{item.viewnum}}万</text>
+            </view>
+            <view class="records_item1_text">
+                <text>{{item.title}}</text>
+            </view>
+        </view>
+    </block>
+</scroll-view>
+<!--正念生活-->
+<view class="records_nav">
+    <text>正念生活</text>
+    <text bindtap="gomore" data-num="2">更多></text>
+</view>
+<scroll-view class="records" scroll-x="{{true}}" scroll-with-animation="true">
+    <block wx:for="{{items3}}" wx:key="{{item.id}}">
+        <view class="records_item1" data-url="{{item.url}}" data-id="{{item.id}}" data-cover="{{item.cover}}" data-title="{{item.title}}" data-speak="{{item.speak}}"data-viewnum="{{item.viewnum}}"  bindtap="gofm_item">
+            <view class="records_item1_img">
+                <image src="{{item.cover}}"  mode="widthFix"></image>
+                <image src="../../image/playCircle.png"  mode="widthFix"></image>
+                <text>{{item.viewnum}}万</text>
+            </view>
+            <view class="records_item1_text">
+                <text>{{item.title}}</text>
+            </view>
+        </view>
+    </block>
+</scroll-view>
+<!--助眠冥想-->
+<view class="records_nav">
+    <text>助眠冥想</text>
+    <text bindtap="gomore" data-num="3">更多></text>
+</view>
+<scroll-view class="records" scroll-x="{{true}}" scroll-with-animation="true">
+    <block wx:for="{{items4}}" wx:key="{{item.id}}">
+        <view class="records_item1" data-url="{{item.url}}" data-id="{{item.id}}" data-cover="{{item.cover}}" data-title="{{item.title}}" data-speak="{{item.speak}}" data-viewnum="{{item.viewnum}}" bindtap="gofm_item">
+            <view class="records_item1_img">
+                <image src="{{item.cover}}"  mode="widthFix"></image>
+                <image src="../../image/playCircle.png"  mode="widthFix"></image>
+                <text>{{item.viewnum}}万</text>
+            </view>
+            <view class="records_item1_text">
+                <text>{{item.title}}</text>
+            </view>
+        </view>
+    </block>
+</scroll-view>
+<!--空耳音乐-->
+<view class="records_nav">
+    <text>空耳音乐</text>
+    <text bindtap="gomore" data-num="4">更多></text>
+</view>
+<scroll-view class="records" scroll-x="{{true}}" scroll-with-animation="true">
+    <block wx:for="{{items5}}" wx:key="{{item.id}}">
+        <view class="records_item1" data-url="{{item.url}}" data-id="{{item.id}}" data-cover="{{item.cover}}" data-title="{{item.title}}" data-speak="{{item.speak}}"data-viewnum="{{item.viewnum}}"  bindtap="gofm_item">
+            <view class="records_item1_img">
+                <image src="{{item.cover}}"  mode="widthFix"></image>
+                <image src="../../image/playCircle.png"  mode="widthFix"></image>
+                <text>{{item.viewnum}}万</text>
+            </view>
+            <view class="records_item1_text">
+                <text>{{item.title}}</text>
+            </view>
+        </view>
+    </block>
+</scroll-view>
+<!--旅行故事-->
+<view class="records_nav">
+    <text>暖心故事</text>
+    <text bindtap="gomore" data-num="5">更多></text>
+</view>
+<scroll-view class="records" scroll-x="{{true}}" scroll-with-animation="true">
+    <block wx:for="{{items6}}" wx:key="{{item.id}}">
+        <view class="records_item1" data-url="{{item.url}}" data-id="{{item.id}}" data-cover="{{item.cover}}" data-title="{{item.title}}" data-speak="{{item.speak}}"data-viewnum="{{item.viewnum}}"  bindtap="gofm_item">
+            <view class="records_item1_img">
+                <image src="{{item.cover}}"  mode="widthFix"></image>
+                <image src="../../image/playCircle.png"  mode="widthFix"></image>
+                <text>{{item.viewnum}}万</text>
+            </view>
+            <view class="records_item1_text">
+                <text>{{item.title}}</text>
+            </view>
+        </view>
+    </block>
+</scroll-view>
+<view class="records_nav">
+</view>
+<!--底部音乐栏-->
+<view class="bottom_nav" wx:if="{{cover!=''}}" style="display: block;" >
+    <view class="image_item">
+        <image src="{{cover}}"></image>
+    </view>
+    <view class="bottom_nav_item1" data-url="{{url}}" data-id="{{id}}" data-cover="{{cover}}" data-title="{{title}}" data-speak="{{speak}}" bindtap="gofm_item">
+        <text class="r">{{title}}</text>
+    </view>
+    <view class="bottom_nav_item2">
+        <image src="{{hidden?'../../image/start.png':'../../image/pause.png'}}" bindtap="pause"></image>
+        <image src="../../image/collect.png"></image>
+    </view>
+</view>
+<view class="bottom_nav" wx:if="{{cover==''}}" style="display: none;" >
+    <view class="image_item">
+        <image src="{{cover}}"></image>
+    </view>
+    <view class="bottom_nav_item1" data-url="{{url}}" data-id="{{id}}" data-cover="{{cover}}" data-title="{{title}}" data-speak="{{speak}}" bindtap="gofm_item">
+        <text class="r">{{title}}</text>
+    </view>
+    <view class="bottom_nav_item2">
+        <image src="{{hidden?'../../image/start.png':'../../image/pause.png'}}" bindtap="pause"></image>
+        <image src="../../image/collect.png"></image>
+    </view>
+</view>

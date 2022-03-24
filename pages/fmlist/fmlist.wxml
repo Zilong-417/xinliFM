@@ -1,0 +1,12 @@
+<!--pages/fmlist/fmlist.wxml-->
+<block wx:for="{{items}}" wx:key="{{item.id}}">
+    <view class="item" data-url="{{item.url}}" data-id="{{item.id}}" data-cover="{{item.cover}}" data-title="{{item.title}}" data-speak="{{item.speak}}"data-viewnum="{{item.viewnum}}"  bindtap="gofm_item">
+        <view class="item_left">
+            <image src="{{item.cover}}"></image>
+        </view>
+        <view class="item_right">
+            <text>{{item.title}}</text>
+            <text>{{item.speak}}</text>
+        </view>
+    </view>
+</block>

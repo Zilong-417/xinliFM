@@ -1,0 +1,47 @@
+<!--pages/fmsearch/fmsearch.wxml-->
+<!--搜索-->
+<view class="top_search">
+    <view class="top_search_left">
+        <input type="text" placeholder="请输入你喜欢的内容吧" bindfocus="inputfouse" bindblur="inputblur" bindinput="getvalue" value="{{search_value}}" focus="true"/>
+    </view>
+    <view class="top_search_right">
+        <image src="../../image/speech.png" bindtap="yuyin"></image>
+    </view>
+</view>
+<!--历史搜索-->
+<view class="history_search" wx:if="{{list!=''}}">
+    <text>历史搜索</text>
+</view>
+<view class="touch-item {{item.isTouchMove ? 'touch-move-active' : ''}}" data-index="{{index}}" wx:for="{{list}}" wx:key  bindtap="searchby" data-searchname="{{item.search_name}}">
+    <view class="content">
+        <view style="{{item.txtStyle}}" class='item' data-index='{{index}}' bindtouchstart="touchstart" bindtouchmove="touchmove" bindtouchend="touchE">
+            　　　　<view class='title'>{{item.search_name}}</view>
+            　　</view>
+    </view>
+    <view class="del" data-id="{{item.id}}" catchtap="delBtn" data-index="{{index}}">删除</view>
+</view>
+<!--底部条-->
+<view class="bottom_nav" adjust-position="{{false}}" style="bottom:{{bottom_val}}px">
+    <view class="bottom_nav_item" bindtap="cancel">
+        <text>取消</text>
+    </view>
+    <view class="bottom_nav_item" bindtap="yuyin">
+        <image src="../../image/speak2.png"></image>
+    </view>
+    <view class="bottom_nav_item" bindtap="empty">
+        <text>清空</text>
+    </view>
+    <view class="bottom_nav_item" bindtap="search">
+        <text>搜索</text>
+    </view>
+</view>
+<!--语音识别-->
+<view class="voice_box" wx:if="{{!yuyinhidden}}">
+    <image src="../../image/right.png" class="record_img1"  bindtap="search"></image>
+    <image src="../../image/error.png" class="record_img2" bindtap="yuyin"></image>
+    <progress strokeWidth="4" percent="{{value}}" wx:if="{{showPg}}"></progress>
+    <view class="dot {{isTouchStart==true?'dot-blowup':''}} {{isTouchEnd==true?'dot-zoomout':''}}" style="display:{{isDot}}"></view>
+    <view class="record" bindtouchstart="recordStart" bindtouchend="recordTerm">
+        <image mode="widthFix" src="../../image/speak2.png"></image>
+    </view>
+</view>

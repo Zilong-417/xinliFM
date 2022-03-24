@@ -1,0 +1,56 @@
+/* pages/fmlist/fmlist.wxss */
+page {
+    width: 100%;
+    height: 100%;
+    background-color: #F5F5F5;
+    overflow: scroll;
+}
+
+.item {
+    width: 100%;
+    height: 10%;
+    margin: 2% 0 2% 0;
+    background-color: white;
+    border-bottom: 1px solid #ccc;
+}
+
+.item_left {
+    float: left;
+    width: 20%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.item_left image {
+    width: 80%;
+    height: 80%;
+    border-radius: 10px;
+    vertical-align: middle;
+}
+
+.item_right {
+    float: left;
+    width: 70%;
+    height: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    
+}
+
+.item_right text:nth-child(1) {
+    display: block;
+    padding-top: 3%;
+    padding-left: 2%;
+    font-size: large;
+}
+
+.item_right text:nth-child(2) {
+    display: block;
+    padding-top: 3%;
+    padding-left: 2%;
+    font-size: 28rpx;
+    color: #AAAAAA;
+}

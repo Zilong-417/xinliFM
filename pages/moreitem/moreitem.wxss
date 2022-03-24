@@ -1,0 +1,133 @@
+/* pages/moreitem/moreitem.wxss */
+page {
+    width: 100%;
+    height: 100%;
+}
+
+/*头部*/
+.nav {
+    width: 100%;
+    height: 7%;
+    /* 文本不换行 */
+    white-space: nowrap;
+    display: flex;
+    box-sizing: border-box;
+    border-bottom: 1rpx solid #eee;
+    background: #fff;
+    align-items: center;
+    /* 固定在顶部 */
+    position: fixed;
+    left: 0rpx;
+    top: 0rpx;
+    z-index: 50;
+}
+
+.nav-item {
+    padding-left: 25rpx;
+    padding-right: 25rpx;
+    height: 100%;
+    display: inline-block;
+    /* 普通文字大小 */
+    font-size: 28rpx;
+}
+
+.nav-text {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: 4rpx;
+    box-sizing: border-box;
+}
+
+.active {
+    color: #7bbfea;
+    /* 选中放大 */
+    font-size: 38rpx !important;
+    font-weight: 600;
+    border-bottom: 2px solid #7bbfea !important;
+}
+
+/*内容*/
+.tab-box {
+    position: absolute;
+    top: 7%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 20;
+}
+
+.tab-content {
+    overflow-y: scroll;
+}
+
+.records_item1 {
+    position: relative;
+    display: inline-block;
+    width: 46%;
+    height: 25%;
+    background-color: white;
+    margin: 3% 0 0 3%;
+    word-wrap: break-word;
+    word-break: normal;
+    overflow: hidden;
+}
+
+.records_item1 .records_item1_img {
+    position: relative;
+    width: 98%;
+    height: 70%;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 1px 1px 1px #DDDDDD;
+    border: 1px solid #ccc;
+}
+
+.records_item1_img image:nth-child(1) {
+    display: block;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+}
+
+.records_item1_img image:nth-child(2) {
+    position: absolute;
+    left: 5%;
+    bottom: 5%;
+    display: inline-block;
+    text-align: center;
+    width: 18%;
+    height: 20%;
+    vertical-align: middle;
+}
+
+.records_item1_img text {
+    position: absolute;
+    left: 30%;
+    bottom: 5%;
+    font-weight: 500;
+    color: white;
+}
+
+.records_item1_text text {
+    font-size: 17px;
+    margin-top: 10px;
+}
+
+.records_item1 .records_item1_text {
+    position: absolute;
+    display: inline-block;
+    overflow: hidden;
+    white-space: normal;
+    margin-top: 10px;
+    font-size: 15px;
+    font-weight: 500;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    -ms-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+}
