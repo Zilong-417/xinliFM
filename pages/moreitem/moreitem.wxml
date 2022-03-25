@@ -15,11 +15,11 @@
     <swiper class="tab-box" current="{{currentTab}}" duration="300" bindchange="switchTab">
         <swiper-item wx:for="{{yxlist}}" wx:for-item="tabItem" wx:for-index="idx" wx:key="idx" class="tab-content">
             <block wx:for="{{tabItem.item}}">
-                <view class="records_item1" data-url="{{item.url}}" data-id="{{item.id}}" data-cover="{{item.cover}}" bindtap="gofm_item">
+                <view class="records_item1" data-url="{{item.url}}" data-id="{{item.id}}" data-cover="{{item.cover}}" data-title="{{item.title}}" bindtap="gofm_item">
                     <view class="records_item1_img">
                         <image src="{{item.cover}}"></image>
                         <image src="../../image/playCircle.png"></image>
-                        <text>{{item.viewnum}}万</text>
+                        <text>{{item.viewnum/10}}万</text>
                     </view>
                     <view class="records_item1_text">
                         <text>{{item.title}}</text>

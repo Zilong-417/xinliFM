@@ -57,7 +57,6 @@ page {
     border-radius: 10px;
     background-color: #F0F8FF;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    z-index: -10;
 }
 
 .nav .nav_box {

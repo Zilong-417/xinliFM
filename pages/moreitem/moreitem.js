@@ -81,9 +81,10 @@ Page({
         var fmurl = e.currentTarget.dataset.url
         var fmid = e.currentTarget.dataset.id
         var cover = e.currentTarget.dataset.cover
+        var title = e.currentTarget.dataset.title
         console.log(fmid)
         wx.navigateTo({
-            url: '/pages/fmplayer/fmplayer?cover=' + cover + '&fmid=' + fmid + '&fmurl=' + fmurl
+            url: '/pages/fmplayer/fmplayer?cover=' + cover + '&fmid=' + fmid + '&title='+title+'&fmurl=' + fmurl
         })
     },
 })

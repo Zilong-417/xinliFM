@@ -4,15 +4,14 @@
   <image class='audio_post{{music_on?" music_on":""}}' style="animation-play-state:{{music_playing?'running':'paused'}}" src='{{cover}}'></image>
 
   <view class='audio_progress'>
-    <slider block-size='14' bindchange='audioChange' bindchanging='audioChanging' value='{{sliderValue}}' style=" padding-left: 4%;" backgroundColor="#DCDCDC" selected-color="	#FF4500" block-size="14" block-color="#FF4500"></slider>
-    <view style="margin-right: 5%;">{{musicTime}}</view>
+    <slider block-size='14' bindchange='audioChange' bindchanging='audioChanging' value='{{sliderValue}}' style=" padding-left: 5%;" backgroundColor="#DCDCDC" selected-color="	#FF4500" block-size="14" block-color="#FF4500"></slider>
   </view>
   <view class='audio_control'>
     <view >
       <image src="../../image/like.png"></image>
     </view>
     <view bindtap="playMusic">
-      <image src="{{hidden?'../../image/pause2.png':'../../image/start2.png'}}" style="width: 90px;height: 90px;"></image>
+      <image src="{{play?'../../image/pause2.png':'../../image/start2.png'}}" style="width: 90px;height: 90px;"></image>
     </view>
     <view bindtap="stopMusic">
       <image src="../../image/ret.png"></image>

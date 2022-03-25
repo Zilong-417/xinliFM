@@ -12,12 +12,13 @@ Page({
   data: {
     audioAnimation: null,
     //音乐是不是开始
-    music_on: true,
+    //music_on: true,
     //音乐是不是在播放
-    music_playing: false,
+    //music_playing: false,
     //显示的时间
-    musicTime: '00:00',
-    sliderValue: 0
+    //musicTime: '00:00',
+    sliderValue: 0,
+    play:app.globalData.play
   },
   onLoad: function (options) {
     var that = this
@@ -26,13 +27,15 @@ Page({
     console.log(options.fmid)
     console.log(options.cover)
     console.log(options.viewnum)
+    console.log(options.title)
     this.setData({
       url: options.fmurl,
       id: options.fmid,
       cover: options.cover,
       speak: options.speak,
       title: options.title,
-      viewnum: options.viewnum
+      viewnum: options.viewnum,
+      play:app.globalData.play
     })
   },
   /**
@@ -64,7 +67,8 @@ Page({
   //播放按钮事件
   playMusic: function () {
     var that = this
-    if (!that.data.hidden) {
+    //如果不是播放
+    if (!that.data.play) {
       console.log(that.data.viewnum)
       app.globalData.music_on = true;
       app.globalData.music_playing = true;
@@ -80,9 +84,9 @@ Page({
       console.log(app.globalData.history)
       //存放播放历史
       var hist = app.globalData.history
-      //是否收藏
-      app.globalData.hidden=true
-      hist.unshift({
+      //变为播放
+      app.globalData.play=false
+      hist.push({
         fmurl: that.data.url,
         fmid: that.data.id,
         cover: that.data.cover,
@@ -93,11 +97,10 @@ Page({
       app.globalData.history = hist
       //图片添加css样式，旋转样式
       this.setData({
-        hidden:app.globalData.hidden,
+        play:!app.globalData.play,
         music_on: app.globalData.music_on,
         music_playing: app.globalData.music_playing
       })
-      console.log(that.data.hidden)
       //将播放历史存进本地
       try {
         wx.setStorageSync('history', app.globalData.history)
@@ -105,18 +108,16 @@ Page({
     } else {
       app.globalData.music_on = true;
       app.globalData.music_playing = false;
-      //是否收藏
-      app.globalData.hidden=false
+      //不是播放
+      app.globalData.play=true
       audioCxt.pause();
       this.setData({
-        hidden:app.globalData.hidden,
+        play:!app.globalData.play,
         music_on: app.globalData.music_on,
         music_playing: app.globalData.music_playing
       })
-      console.log(that.data.hidden)
     }
   },
-
 
   //停止按钮事件
   stopMusic: function () {
@@ -155,7 +156,6 @@ Page({
       musicTime: this.musicTimeFormat(musicTime)
     })
   },
-
   //将秒钟转化为mm：ss的时间格式
   musicTimeFormat: function (time) {
     var second = Math.floor(time % 60);
@@ -168,14 +168,19 @@ Page({
     }
     return minute + ':' + second;
   },
-
   //播放的时候，更新进度条和时间显示
   timeUpdate: function () {
     var time = app.globalData.audioCxt.currentTime;
     var percent = Math.round(time / app.globalData.audioCxt.duration * 100);
+    app.globalData.musicTime= this.musicTimeFormat(time)
     this.setData({
       musicTime: this.musicTimeFormat(time),
       sliderValue: percent
+    })
+  },
+  onShow(){
+    this.setData({
+      play:app.globalData.play
     })
   },
   //页面刷新
@@ -188,5 +193,5 @@ Page({
       wx.stopPullDownRefresh() //停止下拉刷新
       that.onLoad();
     }, 1500);
-  },
+  }
 })

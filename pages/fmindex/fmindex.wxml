@@ -64,7 +64,6 @@
             <view class="records_item_img">
                 <image src="{{item.cover}}" mode="widthFix"></image>
                 <image src="../../image/playCircle.png"  mode="widthFix"></image>
-                <text>{{item.viewnum}}万</text>
             </view>
             <view class="records_item_text" style="font-size: 14px; margin-top: 10px;">
                 <text>{{item.title}}</text>
@@ -83,7 +82,7 @@
             <view class="records_item1_img">
                 <image src="{{item.cover}}"  mode="widthFix"></image>
                 <image src="../../image/playCircle.png"  mode="widthFix"></image>
-                <text>{{item.viewnum}}万</text>
+                <text>{{item.viewnum/10}}万</text>
             </view>
             <view class="records_item1_text">
                 <text>{{item.title}}</text>
@@ -102,7 +101,7 @@
             <view class="records_item1_img">
                 <image src="{{item.cover}}"  mode="widthFix"></image>
                 <image src="../../image/playCircle.png"  mode="widthFix"></image>
-                <text>{{item.viewnum}}万</text>
+                <text>{{item.viewnum/10}}万</text>
             </view>
             <view class="records_item1_text">
                 <text>{{item.title}}</text>
@@ -121,7 +120,7 @@
             <view class="records_item1_img">
                 <image src="{{item.cover}}"  mode="widthFix"></image>
                 <image src="../../image/playCircle.png"  mode="widthFix"></image>
-                <text>{{item.viewnum}}万</text>
+                <text>{{item.viewnum/10}}万</text>
             </view>
             <view class="records_item1_text">
                 <text>{{item.title}}</text>
@@ -140,7 +139,7 @@
             <view class="records_item1_img">
                 <image src="{{item.cover}}"  mode="widthFix"></image>
                 <image src="../../image/playCircle.png"  mode="widthFix"></image>
-                <text>{{item.viewnum}}万</text>
+                <text>{{item.viewnum/10}}万</text>
             </view>
             <view class="records_item1_text">
                 <text>{{item.title}}</text>
@@ -159,7 +158,7 @@
             <view class="records_item1_img">
                 <image src="{{item.cover}}"  mode="widthFix"></image>
                 <image src="../../image/playCircle.png"  mode="widthFix"></image>
-                <text>{{item.viewnum}}万</text>
+                <text>{{item.viewnum/10}}万</text>
             </view>
             <view class="records_item1_text">
                 <text>{{item.title}}</text>
@@ -178,7 +177,7 @@
             <view class="records_item1_img">
                 <image src="{{item.cover}}"  mode="widthFix"></image>
                 <image src="../../image/playCircle.png"  mode="widthFix"></image>
-                <text>{{item.viewnum}}万</text>
+                <text>{{item.viewnum/10}}万</text>
             </view>
             <view class="records_item1_text">
                 <text>{{item.title}}</text>
@@ -197,7 +196,7 @@
         <text class="r">{{title}}</text>
     </view>
     <view class="bottom_nav_item2">
-        <image src="{{hidden?'../../image/start.png':'../../image/pause.png'}}" bindtap="pause"></image>
+        <image src="{{!play?'../../image/pause.png':'../../image/start.png'}}" bindtap="pause"></image>
         <image src="../../image/collect.png"></image>
     </view>
 </view>

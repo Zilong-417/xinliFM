@@ -13,8 +13,8 @@ Page({
     marquee_margin: 30,
     size: 14,
     interval: 20, // 时间间隔
-    hidden: false,
-    hist_hidden:true
+    hist_hidden:true,
+    play:app.globalData.play
   },
 
   /**
@@ -30,7 +30,8 @@ Page({
       title: app.globalData.title,
       url: app.globalData.url,
       id: app.globalData.id,
-      history:app.globalData.history
+      history:app.globalData.history,
+      play:app.globalData.play
     })
     console.log(app.globalData.cover + '/' + app.globalData.speak + '/' + app.globalData.title)
     //平静舒压模块
@@ -160,19 +161,21 @@ Page({
   pause(e) {
     console.log(e)
     var that = this
-    if (app.globalData.music_playing) {
+    if (!that.data.play) {
       app.globalData.music_on = true;
       app.globalData.music_playing = false;
       app.globalData.audioCxt.pause();
+      app.globalData.play=false
       that.setData({
-        hidden: true
+        play:!app.globalData.play,
       })
     } else {
     app.globalData.music_on = true;
     app.globalData.music_playing = true;
       app.globalData.audioCxt.play();
+      app.globalData.play=true
       that.setData({
-        hidden: false
+        play:!app.globalData.play,
       })
     }
 
@@ -185,15 +188,17 @@ Page({
   },
   //删除历史记录
   delhist(){
-    wx.showToast({
-      title: '删除历史记录成功！',
-    })
-    try {
-      wx.removeStorageSync('history')
-    } catch (e) {
-      // Do something when catch error
-    }
-    this.onLoad()
+    var that=this
+    wx.removeStorage({
+      key: 'history',
+      success (res) {
+        console.log(res)
+        app.globalData.history=[]
+        that.setData({
+          history:''
+        })
+    }})
+
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
